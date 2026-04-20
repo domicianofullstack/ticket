@@ -1,0 +1,387 @@
+/* RESET E CORES GLOBAIS */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; 
+    font-size: 14px; 
+    line-height: 1.5; 
+    color: #1f2328; 
+    background-color: #ffffff; 
+}
+
+.container-lg { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.d-flex-align { display: flex; align-items: center; }
+
+/* HEADER ESCURO (TOPO) */
+.gh-header-dark { background-color: #24292f; padding: 16px 0; color: white; }
+.gh-owner-white { margin-left: 10px; font-weight: 600; font-size: 14px; }
+
+/* NAV BAR BRANCA (MENU) */
+.gh-nav-sticky { 
+    background-color: #ffffff; 
+    border-bottom: 1px solid #d0d7de; 
+    padding-top: 16px; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; /* CORREÇÃO: Garante que o menu fique acima de tudo no scroll */
+}
+.gh-nav-sticky ul { display: flex; list-style: none; gap: 8px; margin-left: 280px; }
+.gh-nav-sticky li { 
+    border-bottom: 2px solid transparent; 
+    cursor: pointer; 
+    color: #1f2328; 
+    font-size: 14px; 
+}
+.gh-nav-sticky li.active { font-weight: 600; border-bottom-color: #fd8c73; }
+
+.gh-nav-sticky ul li a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+}
+
+.counter { 
+    background-color: #eff1f3; 
+    color: #1f2328; 
+    padding: 2px 6px; 
+    border-radius: 10px; 
+    font-size: 12px; 
+    margin-left: 6px; 
+}
+
+/* LAYOUT PRINCIPAL */
+.gh-main-layout { display: flex; padding-top: 20px; /* CORREÇÃO: Espaço para não bater na nav */ }
+
+/* SIDEBAR */
+.gh-sidebar { width: 296px; padding-right: 24px; position: relative; z-index: 10; /* CORREÇÃO: Abaixo da nav sticky */ }
+.gh-avatar-container { margin-top: -15px; margin-bottom: 16px; position: relative; }
+.gh-avatar { 
+    width: 260px; 
+    height: 260px; 
+    border-radius: 50%; 
+    border: 1px solid #d0d7de; 
+    background-color: white; 
+    box-shadow: 0 0 0 4px #fff; 
+}
+
+.gh-profile-names { margin-bottom: 16px; }
+.vcard-fullname { font-size: 26px; line-height: 1.25; font-weight: 600; display: block; }
+.vcard-username { font-size: 20px; font-weight: 300; color: #636c76; display: block; }
+
+.gh-profile-bio { font-size: 16px; margin-bottom: 16px; }
+.gh-btn-status { 
+    width: 100%; padding: 6px; 
+    border: 1px solid #d0d7de; 
+    border-radius: 6px; 
+    background: #f6f8fa; 
+    cursor: pointer; 
+    text-align: left; 
+    font-size: 12px; 
+    margin-bottom: 16px; 
+}
+.status-indicator { 
+    display: inline-block; width: 8px; height: 8px; 
+    background: #238636; border-radius: 50%; margin-right: 8px; 
+}
+
+.gh-vcard-details { color: #1f2328; font-size: 14px; }
+.vcard-detail { margin-top: 4px; }
+
+/* CONTEÚDO README */
+.gh-content { flex: 1; padding-top: 24px; }
+.gh-readme { border: 1px solid #d0d7de; border-radius: 6px; margin-bottom: 24px; }
+.readme-header { 
+    padding: 8px 16px; background: #f6f8fa; 
+    border-bottom: 1px solid #d0d7de; 
+    font-family: monospace; font-size: 12px; 
+    border-radius: 6px 6px 0 0;
+}
+.readme-body { padding: 32px; }
+.readme-body h1 { 
+    font-size: 32px; border-bottom: 1px solid #d0d7de; 
+    padding-bottom: 8px; margin-bottom: 24px; 
+}
+
+.readme-banner { 
+    background: #f6f8fa; border: 1px solid #d0d7de; 
+    border-radius: 6px; padding: 16px; margin-bottom: 24px; 
+}
+.tech-grid { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.gh-badge { padding: 2px 10px; border-radius: 2em; color: white; font-weight: 600; font-size: 12px; }
+.badge-node { background: #3e863e; }
+.badge-js { background: #e3d341; color: black; }
+.badge-express { background: #333; }
+.badge-mysql { background: #00758f; }
+
+/* SEÇÃO DE PROJETOS */
+.gh-pinned-header { margin-top: 24px; margin-bottom: 16px; }
+.gh-pinned-header h2 { font-size: 16px; font-weight: 400; color: #1f2328; }
+.gh-projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+
+.gh-project-card { 
+    border: 1px solid #d0d7de; 
+    border-radius: 6px; 
+    padding: 16px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    transition: border-color 0.2s;
+}
+.gh-project-card:hover { border-color: #0969da; }
+
+.project-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.icon-repo { fill: #636c76; }
+.project-title { color: #0969da; text-decoration: none; font-weight: 600; font-size: 14px; }
+.project-title:hover { text-decoration: underline; }
+.label-public { 
+    font-size: 12px; color: #636c76; 
+    border: 1px solid #d0d7de; border-radius: 2em; 
+    padding: 0 7px; font-weight: 500; 
+}
+.project-desc { font-size: 12px; color: #636c76; margin-bottom: 16px; flex-grow: 1; }
+
+.project-tech-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.gh-badge-mini {
+    padding: 2px 8px; border-radius: 2em; 
+    font-size: 11px; font-weight: 600; 
+    background-color: #f6f8fa; color: #57606a; 
+    border: 1px solid #d0d7de; transition: all 0.2s;
+}
+.gh-badge-mini:hover { background-color: #0969da; color: white !important; border-color: #0969da; }
+
+/* FORMULÁRIO */
+.gh-form-modern {
+    display: flex; flex-direction: column; 
+    gap: 15px; margin-top: 20px; max-width: 600px;
+}
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-weight: 600; font-size: 14px; color: #1f2328; }
+.form-group input, .form-group select, .form-group textarea {
+    padding: 8px 12px; border: 1px solid #d0d7de; 
+    border-radius: 6px; background-color: #f6f8fa; font-size: 14px;
+}
+
+.gh-btn-save {
+    background-color: #2da44e; color: white; 
+    padding: 8px 16px; border: 1px solid rgba(27, 31, 36, 0.15); 
+    border-radius: 6px; font-weight: 600; cursor: pointer; align-self: flex-start;
+}
+
+/* LOGO PERSONALIZADO [d] */
+.custom-logo {
+    display: flex; align-items: center; font-weight: 800; font-size: 22px;
+    height: 32px; color: #34f84e; cursor: pointer; transition: opacity 0.2s;
+}
+.logo-bracket { color: #c0b8b7; font-size: 24px; }
+.logo-letter { margin: 0 1px; position: relative; top: -1px; }
+
+/* FOOTER */
+.gh-footer { margin-top: 40px; padding: 40px 0; border-top: 1px solid #d0d7de; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { display: flex; align-items: center; gap: 8px; color: #6e7781; font-size: 12px; }
+.footer-nav { display: flex; gap: 16px; }
+.footer-nav a { text-decoration: none; color: #0969da; font-size: 12px; }
+
+ /* Estilização do formulário de login no header */
+    .header-login-form {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .login-group { display: flex; align-items: center; gap: 5px; color: white; font-size: 12px; }
+    .login-input {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        padding: 3px 8px;
+        color: white;
+        font-size: 12px;
+        width: 130px;
+    }
+    .login-input:focus { outline: none; border-color: #0969da; background: white; color: black; }
+    .btn-entrar {
+        background-color: #2da44e;
+        color: white;
+        border: 1px solid rgba(27, 31, 36, 0.15);
+        border-radius: 4px;
+        padding: 3px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    /* Área do Usuário Logado Otimizada */
+    .user-logged { 
+        color: white; 
+        margin-left: auto; 
+        display: flex; 
+        align-items: center; 
+        gap: 10px; /* Espaço entre as informações e o botão Sair */
+    }
+    
+    /* Classes auxiliares para o novo layout */
+    .color-fg-subtle { color: #848d97 !important; }
+    .mr-2 { margin-right: 8px !important; }
+    .d-flex { display: flex !important; }
+    .flex-items-center { align-items: center !important; }
+
+    .btn-logout {
+        color: #f85149;
+        text-decoration: none;
+        font-size: 12px;
+        border: 1px solid rgba(248, 81, 73, 0.4);
+        padding: 4px 10px; /* Aumentei levemente o clique */
+        border-radius: 6px;
+        font-weight: 500;
+        transition: 0.2s;
+    }
+    .btn-logout:hover { 
+        background: rgba(248, 81, 73, 0.15); 
+        border-color: #f85149;
+    }
+
+  /* =========================
+   TERMINAL CHAT STYLE
+========================= */
+
+.terminal-chat {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: "Fira Code", monospace;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #313438;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Linha do terminal */
+.terminal-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    line-height: 1.5;
+}
+
+/* Prompt */
+.prompt {
+    font-weight: 600;
+}
+
+.prompt.user {
+    color: #58a6ff;
+}
+
+.prompt.admin {
+    color: #049b11;
+}
+
+/* Comando (usuário) */
+.command {
+    color: #e6edf3;
+}
+
+/* Resposta (admin) */
+.output {
+    color: #222324;
+}
+
+/* Cursor piscando */
+.terminal-line:last-child::after {
+    content: "▋";
+    margin-left: 5px;
+    animation: blink 1s infinite;
+    color: #58a6ff;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+/* =========================
+   DRIVE SYSTEM
+========================= */
+.drive-actions {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.text-subtle { color: #636c76; font-size: 12px; margin-top: 8px; }
+
+.file-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+.file-card {
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.file-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.file-preview {
+    height: 120px;
+    background-color: #f6f8fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.file-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.file-info {
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-name {
+    font-size: 12px;
+    color: #1f2328;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.btn-delete-file {
+    background: transparent;
+    border: none;
+    color: #cf222e;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.btn-delete-file:hover {
+    background-color: #ffebe9;
+}
+
+.drive-empty {
+    text-align: center;
+    padding: 40px;
+    color: #636c76;
+    border: 2px dashed #d0d7de;
+    border-radius: 6px;
+}

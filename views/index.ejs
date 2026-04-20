@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danilo Souza | Programador FullStack</title>
+    <link rel="stylesheet" href="/css/github-style.css">
+
+</head>
+<body class="theme-light">
+    <header class="gh-header-dark">
+        <div class="container-lg d-flex-align">
+            <div class="custom-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-letter">d</span>
+                <span class="logo-bracket">]</span>
+            </div>
+            <div class="gh-owner-white">domicianofullstack</div>
+            
+            <% if (typeof modoCliente !== 'undefined' && modoCliente) { %>
+                <div class="user-logged">
+    <div class="d-flex flex-items-center">
+        <span class="color-fg-subtle mr-2" style="font-size: 14px;">Logado como:</span>
+        <strong style="color: #adbac7; border-right: 1px solid rgba(205, 217, 229, 0.2); padding-right: 12px; margin-right: 12px;">
+            👤 <%= ticket.nome %>
+        </strong>
+    </div>
+    <a href="/" class="btn-logout">Sair</a>
+</div>
+            <% } else { %>
+                <form class="header-login-form" action="/login-ticket" method="POST">
+                    <div class="login-group">
+                        <label>Login:</label>
+                        <input type="email" name="email" class="login-input" required placeholder="E-mail">
+                    </div>
+                    <div class="login-group">
+                        <label>Senha:</label>
+                        <input type="password" name="senha" class="login-input" required placeholder="Senha">
+                    </div>
+                    <button type="submit" class="btn-entrar">Entrar</button>
+                </form>
+            <% } %>
+        </div>
+    </header>
+
+    <nav class="gh-nav-sticky">
+        <div class="container-lg">
+            <ul>
+                <% if (typeof modoCliente === 'undefined' || !modoCliente) { %>
+    <li id="nav-overview" class="<%= (typeof modoCliente !== 'undefined' && modoCliente) ? '' : 'active' %>">
+        <a href="javascript:void(0)" onclick="navegar('overview')">Sobre [d]</a>
+    </li>
+    <li id="nav-projetos">
+        <a href="javascript:void(0)" onclick="navegar('projetos')">
+            Meus Projetos <span class="counter"><%= projetos.length %></span>
+        </a>
+    </li>
+
+    
+        <li id="nav-novo">
+            <a href="javascript:void(0)" onclick="navegar('novo')">Novos Projetos</a>
+        </li>
+    <% } %>
+    
+    <% if (typeof modoCliente !== 'undefined' && modoCliente) { %>
+    <li id="nav-ticket" class="active">
+        <a href="javascript:void(0)" onclick="navegar('ticket')">Meus Chamados</a>
+    </li>
+    <li id="nav-drive">
+        <a href="javascript:void(0)" onclick="navegar('drive')">Drive</a>
+    </li>
+<% } %>
+
+     <% if (typeof modoCliente === 'undefined' || !modoCliente) { %>
+    <li><a href="#">Comentários</a></li>
+     <% } %>
+</ul>
+        </div>
+    </nav>
+
+    <div class="container-lg">
+        <main class="gh-main-layout">
+            
+            <aside class="gh-sidebar">
+                <div class="gh-avatar-container">
+                    <img src="/logo.png" alt="Avatar [d] Souza" class="gh-avatar">
+                </div>
+                
+                <div class="gh-profile-names">
+                    <h1 class="vcard-fullname">[d] Souza</h1>
+                    <span class="vcard-username">domicianofullstack</span>
+                </div>
+                
+                <div class="gh-profile-bio">
+                    Desenvolvedor de Software com mais de 6 anos de experiência, especializado na criação de aplicações web e sistemas escaláveis.
+                </div>
+                
+                <button class="gh-btn-status">
+                    <span class="status-indicator"></span> Disponível para Projetos
+                </button>
+                
+                <div class="gh-vcard-details">
+                    <div class="vcard-detail">📍 Londres, Reino Unido</div>
+                    <div class="vcard-detail">🔗 domiciano.shop</div>
+                </div>
+            </aside>
+            
+            <section class="gh-content">
+                
+                <div id="section-overview" class="content-section" style="<%= (typeof modoCliente !== 'undefined' && modoCliente) ? 'display: none;' : 'display: block;' %>">
+                    <div class="gh-readme">
+                        <div class="readme-header">
+                            <span>domicianofullstack/README.md</span>
+                        </div>
+                        <div class="readme-body">
+                            <h1>Olá, eu sou o Danilo ( [d] Souza ) 👋</h1>
+                            <div class="readme-banner">
+                                <h2>👨‍💻 Sobre [d]</h2>
+                                <p>Desenvolvedor de Software com mais de 6 anos de experiência, especializado na criação de aplicações web e sistemas escaláveis. Atualmente focado em arquiteturas robustas com Node.js e ecossistemas modernos.</p>
+                            </div>
+                            
+                            <div class="readme-section tech-section">
+                                <h3>🛠️ Tecnologias e Ferramentas</h3>
+                                <h4>Linguagens & Frameworks</h4>
+                                <div class="tech-grid">
+                                    <span class="gh-badge badge-node">Node.js</span>
+                                    <span class="gh-badge badge-js">JavaScript</span>
+                                    <span class="gh-badge badge-express">Express.js</span>
+                                    <span class="gh-badge badge-mysql">MySQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gh-pinned-header" style="margin-top: 24px;">
+                        <h2>📊 Projetos em Destaque</h2>
+                    </div>
+                    <div class="gh-projects-grid">
+                        <% if (projetos && projetos.length > 0) { 
+                            let destaques = projetos.slice(0, 2);
+                            destaques.forEach(projeto => { %>
+                            <div class="gh-project-card">
+                                <div class="project-header">
+                                    <svg class="icon-repo" viewBox="0 0 16 16" width="16" height="16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7c.001.001.003.003.005.005l.005.005a.75.75 0 01-1.06 1.06l-.005-.005a1.031 1.031 0 01-.009-.009A2.5 2.5 0 012 11V2.5zm10.5-.5h-8a1 1 0 00-1 1v8.17a2.49 2.49 0 011-.17h8V2z"></path></svg>
+                                    <a href="<%= projeto.link_repositorio %>" target="_blank" class="project-title"><%= projeto.titulo %></a>
+                                    <span class="label-public">Public</span>
+                                </div>
+                                <p class="project-desc">Acesse o código fonte e a documentação completa no meu repositório do GitHub.</p>
+                                <div class="project-footer">
+                                    <div class="project-tech-badges">
+                                        <% if (projeto.tecnologias) { 
+                                            projeto.tecnologias.split(',').forEach(tech => { %>
+                                                <span class="gh-badge-mini"><%= tech.trim() %></span>
+                                        <% }); } %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); } %>
+                    </div>
+                </div>
+
+                <div id="section-projetos" class="content-section" style="display: none;">
+                    <div class="gh-pinned-header">
+                        <h2>Todos os Projetos Recentes</h2>
+                    </div>
+                    <div class="gh-projects-grid">
+                        <% if (projetos && projetos.length > 0) { 
+                            projetos.forEach(projeto => { %>
+                            <div class="gh-project-card">
+                                <div class="project-header">
+                                    <svg class="icon-repo" viewBox="0 0 16 16" width="16" height="16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7c.001.001.003.003.005.005l.005.005a.75.75 0 01-1.06 1.06l-.005-.005a1.031 1.031 0 01-.009-.009A2.5 2.5 0 012 11V2.5zm10.5-.5h-8a1 1 0 00-1 1v8.17a2.49 2.49 0 011-.17h8V2z"></path></svg>
+                                    <a href="<%= projeto.link_repositorio %>" target="_blank" class="project-title"><%= projeto.titulo %></a>
+                                    <span class="label-public">Public</span>
+                                </div>
+                                <p class="project-desc">Acesse o código fonte e a documentação completa no meu repositório do GitHub.</p>
+                                <div class="project-footer">
+                                    <div class="project-tech-badges">
+                                        <% if (projeto.tecnologias) { 
+                                            projeto.tecnologias.split(',').forEach(tech => { %>
+                                                <span class="gh-badge-mini"><%= tech.trim() %></span>
+                                        <% }); } %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); } %>
+                    </div>
+                </div>
+
+                <div id="section-novo" class="content-section" style="display: none;">
+                    <div class="gh-readme">
+                        <div class="readme-header"><span>solicitar-projeto.md</span></div>
+                        <div class="readme-body">
+                            <h2>🚀 Inicie um novo projeto</h2>
+                            <form class="gh-form-modern" action="/solicitar-projeto" method="POST">
+                                <div class="form-group">
+                                    <label>Seu Nome ou Empresa</label>
+                                    <input type="text" name="nome" required placeholder="Ex: Danilo Souza Inc.">
+                                </div>
+                                <div class="form-group">
+                                    <label>Seu E-mail</label>
+                                    <input type="email" name="email" required placeholder="seunome@email.com.br">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tipo de Projeto</label>
+                                    <select name="tipo">
+                                        <option>Website Institucional</option>
+                                        <option>Sistema Web Personalizado</option>
+                                        <option>E-commerce / Loja Virtual</option>
+                                        <option>Consultoria Técnica</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descrição</label>
+                                    <textarea name="descricao" rows="5" required placeholder="Descreva sua ideia..."></textarea>
+                                </div>
+                                <button type="submit" class="gh-btn-save">Enviar Solicitação</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            <% if (typeof modoCliente !== 'undefined' && modoCliente) { %>
+<div id="section-ticket" class="content-section">
+    <div class="gh-readme">
+        <div class="readme-header"><span>ticket_status.md</span></div>
+        <div class="readme-body">
+            
+            <div style="background-color: #ddf4ff; border: 1px solid #54aeff; border-radius: 6px; padding: 16px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
+                <span style="font-size: 20px;">💡</span>
+                <div>
+                    <h4 style="margin: 0; color: #0969da; font-size: 14px;">Informações de Acesso</h4>
+                    <p style="margin: 4px 0 0; font-size: 13px; color: #1f2328;">
+                        Guarde seu e-mail de acesso e utilize a senha: <strong><%= ticket.senha %></strong> para acompanhar o progresso deste chamado futuramente.
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; padding: 24px; border: 1px solid #d0d7de; border-radius: 8px; background: #ffffff;">
+    
+    <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+        <div style="font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 2em; background: #dafbe1; color: #1a7f37; border: 1px solid rgba(26,127,55,0.2);">
+            Status: <%= ticket.status %>
+        </div>
+        <div style="font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 2em; background: #ddf4ff; color: #0969da; border: 1px solid rgba(9,105,218,0.2);">
+            Projeto: <%= ticket.tipo %>
+        </div>
+    </div>
+
+<div class="ticket-container">
+    
+    <span style="font-size: 12px; font-weight: 600; color: #57606a; margin-left: 48px; margin-bottom: 8px; display: block;">Histórico de mensagens:</span>
+    
+    <div class="terminal-chat">
+        <% 
+           // Transformamos a string única em um array de mensagens
+           const mensagens = ticket.descricao.split('|||'); 
+           mensagens.forEach(msg => { 
+               if(msg.trim()) { %>
+                <div class="terminal-line">
+    <span class="prompt user">
+        <%= ticket.nome.toLowerCase().replace(' ', '') %>@ticket:~$
+    </span>
+    <span class="command"><%= msg %></span>
+</div>
+        <%     }
+           }); 
+        %>
+    </div>
+
+    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eaeef2;">
+
+    <span style="font-size: 12px; font-weight: 600; color: #0969da; margin-left: 48px; margin-bottom: 8px; display: block;">Resposta de Danilo Souza:</span>
+    <div class="terminal-line">
+    <span class="prompt admin">danilo@server:~#</span>
+    <span class="output">
+        <%= ticket.resposta_admin ? ticket.resposta_admin : "Aguardando resposta..." %>
+    </span>
+</div>
+</div>
+
+                <div style="margin-top: 30px;">
+                    <h4>Reenviar mensagem ou responder:</h4>
+                    <form action="/responder-ticket" method="POST" style="margin-top: 10px;">
+                        <input type="hidden" name="ticketId" value="<%= ticket.id %>">
+                        <input type="hidden" name="email" value="<%= ticket.email %>">
+                        <input type="hidden" name="senha" value="<%= ticket.senha %>">
+                        <textarea name="novaMensagem" rows="4" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #d0d7de; font-family: inherit;" placeholder="Escreva sua dúvida ou novos detalhes aqui..." required></textarea>
+                        <button type="submit" class="gh-btn-save" style="margin-top: 10px;">Enviar Resposta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+<% if (typeof modoCliente !== 'undefined' && modoCliente && typeof ticket !== 'undefined' && ticket) { %>
+<div id="section-drive" class="content-section" style="display: none;">
+    <div class="gh-readme">
+        <div class="readme-header">
+            <span>drive / imagens / personal_storage</span>
+        </div>
+        <div class="readme-body">
+            <div class="drive-actions">
+                <form action="/upload-drive" method="POST" enctype="multipart/form-data" class="upload-form">
+                    <input type="hidden" name="ticketId" value="<%= ticket.id %>">
+                    <label class="gh-btn-save" style="background-color: #218bff; cursor: pointer;">
+                        + Enviar Nova Imagem
+                        <input type="file" name="arquivo" accept="image/png, image/jpeg" style="display: none;" onchange="this.form.submit()">
+                    </label>
+                </form>
+                <p class="text-subtle">Apenas arquivos PNG ou JPG são permitidos.</p>
+            </div>
+
+            <div class="file-grid">
+                <% if (typeof arquivos !== 'undefined' && arquivos.length > 0) { %>
+                    <% arquivos.forEach(file => { %>
+                        <div class="file-card">
+                            <div class="file-preview">
+                                <img src="/uploads/<%= file.nome_arquivo %>" alt="Preview">
+                            </div>
+                            <div class="file-info">
+                                <span class="file-name"><%= file.nome_original %></span>
+                                <form action="/deletar-arquivo" method="POST" onsubmit="return confirm('Excluir esta imagem?')">
+    <input type="hidden" name="fileId" value="<%= file.id %>">
+    <input type="hidden" name="ticketId" value="<%= ticket.id %>"> <button type="submit" class="btn-delete-file"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11 1.75V3h2.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75zM4.496 6.675a.75.75 0 10-1.492.15l.66 6.6A1.75 1.75 0 005.405 15h5.19c.9 0 1.652-.681 1.741-1.576l.66-6.6a.75.75 0 00-1.492-.149l-.66 6.6a.25.25 0 01-.249.225h-5.19a.25.25 0 01-.249-.225l-.66-6.6z"></path></svg></button>
+</form>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <div class="drive-empty">
+                        <p>Nenhuma imagem no seu drive ainda.</p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+            </section>
+        </main>
+    </div>
+
+    <footer class="gh-footer container-lg">
+        <div class="footer-content">
+            <div class="footer-copy">
+                <div class="custom-logo">
+                    <span class="logo-bracket">[</span><span class="logo-letter">d</span><span class="logo-bracket">]</span>
+                </div>
+                <span>© 2026 Danilo Souza.</span>
+            </div>
+            <nav class="footer-nav">
+                <a href="#">Status</a><a href="#">Docs</a><a href="#">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        function navegar(secao) {
+            document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.gh-nav-sticky li').forEach(li => li.classList.remove('active'));
+            document.getElementById('section-' + secao).style.display = 'block';
+            document.getElementById('nav-' + secao).classList.add('active');
+        }
+    </script>
+</body>
+</html>
