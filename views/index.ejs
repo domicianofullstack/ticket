@@ -60,6 +60,10 @@
         <li id="nav-novo">
             <a href="javascript:void(0)" onclick="navegar('novo')">Novos Projetos</a>
         </li>
+
+        <li id="nav-hospedagem">
+    <a href="javascript:void(0)" onclick="navegar('hospedagem')">Hospedagem</a>
+</li>
     <% } %>
     
     <% if (typeof modoCliente !== 'undefined' && modoCliente) { %>
@@ -218,6 +222,42 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="section-hospedagem" class="content-section" style="display: none;">
+    <div class="gh-readme">
+        <div class="readme-header">
+            <span>hosting_plans.md</span>
+        </div>
+        <div class="readme-body">
+            <h2>☁️ Servidor Gerenciado Profissional</h2>
+            <p>Hospedagem de alta performance para o seu negócio, configurada e monitorada por mim.</p>
+            
+            <div style="margin-top: 24px; padding: 24px; border: 2px solid #218bff; border-radius: 8px; background: #f6f8fa;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3 style="margin: 0; color: #1f2328;">Plano FullStack Pro</h3>
+                    <span style="font-size: 24px; font-weight: bold; color: #1a7f37;">R$ 50<small>/mês</small></span>
+                </div>
+                
+                <ul style="list-style: none; padding: 0; margin: 20px 0;">
+                    <li style="margin-bottom: 10px;">✅ <strong>Certificado SSL (HTTPS) Incluso</strong></li>
+                    <li style="margin-bottom: 10px;">✅ Backup Diário Automatizado</li>
+                    <li style="margin-bottom: 10px;">✅ Banco de Dados MySQL Exclusivo</li>
+                    <li style="margin-bottom: 10px;">✅ Monitoramento PM2 (Site 24h online)</li>
+                    <li style="margin-bottom: 10px;">✅ Suporte via sistema de Chamados</li>
+                    <li style="margin-bottom: 10px;">✅ Infraestrutura VPS em Londres (UK)</li>
+                </ul>
+
+                <button onclick="navegar('novo')" class="gh-btn-save" style="width: 100%; padding: 12px; background-color: #1a7f37;">
+                    Contratar este Plano
+                </button>
+            </div>
+
+            <div style="margin-top: 24px; font-size: 13px; color: #57606a; border-top: 1px solid #d0d7de; padding-top: 16px;">
+                <p>💡 <em>Nota: Este plano é ideal para sites institucionais, landing pages e pequenos sistemas web. Para projetos de grande escala, solicite um orçamento personalizado.</em></p>
+            </div>
+        </div>
+    </div>
+</div>
 
             <% if (typeof modoCliente !== 'undefined' && modoCliente) { %>
 <div id="section-ticket" class="content-section">
