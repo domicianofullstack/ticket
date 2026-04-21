@@ -119,6 +119,7 @@ body {
 .badge-pm2 { background-color: #2B037A; color: #fff; }
 .badge-nginx { background-color: #009639; color: #fff; }
 .badge-ejs { background-color: #A4523E; color: #fff; }
+.badge-git { background-color: #c40525; color: #fff; }
 
 /* SEÇÃO DE PROJETOS */
 .gh-pinned-header { margin-top: 24px; margin-bottom: 16px; }
