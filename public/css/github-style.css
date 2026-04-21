@@ -114,6 +114,11 @@ body {
 .badge-js { background: #e3d341; color: black; }
 .badge-express { background: #333; }
 .badge-mysql { background: #00758f; }
+.badge-linux { background-color: #FCC624; color: #000; }
+.badge-vps { background-color: #007bff; color: #fff; }
+.badge-pm2 { background-color: #2B037A; color: #fff; }
+.badge-nginx { background-color: #009639; color: #fff; }
+.badge-ejs { background-color: #A4523E; color: #fff; }
 
 /* SEÇÃO DE PROJETOS */
 .gh-pinned-header { margin-top: 24px; margin-bottom: 16px; }
